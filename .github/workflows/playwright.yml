@@ -18,10 +18,13 @@ on:
           - QA
           - stage
           - dev
+concurrency:
+  group: playwright-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 20
     runs-on: ubuntu-24.04
     environment: ${{ github.event.inputs.environment || 'QA' }}
 
