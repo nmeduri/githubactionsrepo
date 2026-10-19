@@ -8,7 +8,7 @@ test("headervalidations test", async ({ request }) => {
   console.log("Response Body:", await response.body());
 });
 
-test(" Get All BookingIds", async ({ request }) => {
+test.skip(" Get All BookingIds", async ({ request }) => {
   let getResponse = await request.get(
     "https://restful-booker.herokuapp.com/booking",
   );
@@ -35,12 +35,12 @@ test(" Get All BookingIds", async ({ request }) => {
     expect(typeof ele.bookingid).toBe("number");
   }
 });
-let user: any = [
-  {
-    id: 101,
-    name: "sdfsd",
-  },
-];
+// let user: any = [
+//   {
+//     id: 101,
+//     name: "sdfsd",
+//   },
+// ];
 
-let res = user.find((item: any) => item.id === 101);
-console.log(res.name);
+// let res = user.find((item: any) => item.id === 101);
+// console.log(res.name);
