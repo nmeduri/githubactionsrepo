@@ -3,15 +3,33 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report reports\\html-report",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+    "allure:open": "npx allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "clean": "rimraf allure-results allure-report playwright-report test-results reports/html-report",
+    "allure:Clean": "rimraf allure-results allure-report"
+  },
   "keywords": [],
   "author": "Naveen Kumar Meduri",
   "type": "module",
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "@types/node": "^26.4.0"
+    "@types/node": "^26.4.0",
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.13.0",
+    "reporting-labs": "^0.6.21",
+    "rimraf": "^6.1.3"
   },
   "dependencies": {
-    "csv-parse": "^7.0.2"
+    "ajv": "^8.20.0",
+    "csv-parse": "^7.0.2",
+    "dotenv": "^18.0.5"
   }
 }

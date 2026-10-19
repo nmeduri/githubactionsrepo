@@ -428,3 +428,101 @@ The framework can be enhanced with:
 **Naveen Meduri**
 
 QA Automation / Test Automation Engineer
+
+
+Run your tests and generate the Allure report
+Step 1 — Clean previous reports
+Removes the previous Allure and Playwright report folders.
+npm run clean
+
+Step 2 — Execute tests
+Runs your Playwright tests.
+npm test
+
+Step 3 — Generate Allure HTML
+Creates the report from the latest results.
+npm run allure:generate
+
+Step 4 — Open the report
+Opens the generated Allure report.
+npm run allure:open
+
+You can also run everything from test execution through report opening with:
+npm test
+npm run allure:report
+
+Verify cleanup:
+Test-Path .\allure-results
+Test-Path .\allure-report
+Test-Path .\reports\html-report
+
+Generate a fresh Allure report:
+npm test
+npm run allure:generate
+npm run allure:open
+
+
+/** 
+Here are the commands I recommend for your OpenCart Playwright TypeScript framework on Windows.
+*/
+
+Step 1: Clone the project
+If you haven't cloned the repository yet:
+
+git clone <your-repository-url>
+Navigate to the project folder:
+cd OPENCART_APRIL_WEB_API_FRAMEWORK
+
+Step 2: Check Node.js and npm
+node -v
+npm -v
+
+These commands verify that Node.js and npm are installed.
+
+Step 3: Install dependencies
+npm ci
+Why npm ci? It installs the dependency versions recorded in package-lock.json, giving you a more consistent setup.
+
+If the repository doesn't contain package-lock.json, use:
+
+npm install
+
+Step 4: Install Playwright browsers
+
+npx playwright install
+
+If you only need Chromium:
+npx playwright install chromium
+
+This installs the browser binaries required by your Playwright configuration.
+
+Step 5: Configure environment variables
+
+If your project uses .env.dev or another environment file, check the README for the required setup.
+
+For example, if your framework expects .env.dev, create or obtain that file with the necessary configuration. Don't commit passwords, access tokens, or other secrets to GitHub.
+
+Step 6: Run your tests
+npm run test
+
+Run tests in headed mode:
+npm run test:headed
+
+Run only the Chromium project:
+npm run test:chrome
+
+All commands in sequence:
+clone the project
+cd to project folder
+
+node -v
+npm -v
+npm ci
+npx playwright install
+npm run test
+npm run test:report
+
+// "allure:clean": "if exist allure-results rmdir /s /q allure-results & if exist allure-report rmdir /s /q allure-report",
+
+To run batch file:
+.\versiontests.bat run from command prompt

@@ -1,61 +1,38 @@
 
-# Dependencies
-node_modules/
-
 # Playwright
-test-results/
-playwright-report/
-blob-report/
-playwright/.cache/
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/reports/
+/reporting-labs/
+/allure-report/
+/allure-results/
+reporting-labs.history.json
 
-# Allure
-allure-results/
-allure-report/
+# env files (credentials)
+config/.env.*
+!config/.env.example
 
-# Environment files - secrets/config
-.env
-.env.*
-!.env.example
-
-# Test data that may contain sensitive information
-# Uncomment if these files contain credentials
-# testdata/*.csv
-# testdata/*.json
-# testdata/*.xlsx
-
-# TypeScript
+# build
 dist/
-build/
-*.tsbuildinfo
 
-# Logs
-*.log
-logs/
-
-# Coverage
-coverage/
-
-# IDE / Editor
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-.idea/
-*.iml
+# auth
+src/data/auth.json
 
 # OS files
 .DS_Store
 Thumbs.db
-Desktop.ini
 
-# Temporary files
-*.tmp
-*.temp
-*.swp
+# IDE
+.vscode/
+.idea/
 
-# Debug / screenshots / videos
-screenshots/
-videos/
-traces/
+# logs
+*.log
+npm-debug.log*
 
-# Playwright generated artifacts
-test-results/
+# misc
+*.tgz
