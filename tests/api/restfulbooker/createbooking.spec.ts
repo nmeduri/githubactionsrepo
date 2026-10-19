@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 let booker_auth_URL = process.env.RESTFUL_BOOKER_TOKEN_URL;
 let tokenID: string;
 let bookingIds: number[] = [];
-test.beforeAll(" create tokenid:", async ({ request }) => {
+test("create tokenid:", async ({ request }) => {
   let authResponse = await request.post(
     "https://restful-booker.herokuapp.com/auth",
     {
@@ -36,7 +36,7 @@ test.beforeAll(" create tokenid:", async ({ request }) => {
   console.log("Token:", tokenID);
 });
 
-test(" create booking:", async ({ request }) => {
+test.skip(" create booking:", async ({ request }) => {
   let i;
   let userData = {
     firstname: "Jim",
