@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 let booker_auth_URL = process.env.RESTFUL_BOOKER_TOKEN_URL;
 let tokenID: string;
 let bookingIds: number[] = [];
-test.beforeAll(" create tokenid:", async ({ request }) => {
+test(" create tokenid:", async ({ request }) => {
   let authResponse = await request.post(`${booker_auth_URL}`, {
     headers: {
       "Content-Type": "application/json",
@@ -14,10 +14,17 @@ test.beforeAll(" create tokenid:", async ({ request }) => {
       password: "password123",
     },
   });
+  console.log("Auth Response Status Code:",authResponse.status());
   expect(authResponse.status()).toBe(200);
+  console.log("Auth Response Status Code:",authResponse.statusText());
   expect(authResponse.statusText()).toBe("OK");
-
+  console.log("Content-Type",authResponse.headers()['content-type']);
+  let text=await authResponse.text();
+  console.log("Text Body:",text);
+  let textBody=JSON.parse(text);
+  console.log("Token Received successfully",textBody.token);
   let jsonbody = await authResponse.json();
+  console.log("JSON BODY:", jsonbody);
   tokenID = jsonbody.token;
   console.log("Token:", tokenID);
 });
