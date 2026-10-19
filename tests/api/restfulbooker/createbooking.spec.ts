@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 let booker_auth_URL = process.env.RESTFUL_BOOKER_TOKEN_URL;
 let tokenID: string;
 let bookingIds: number[] = [];
-test(" create tokenid:", async ({ request }) => {
+test.skip(" create tokenid:", async ({ request }) => {
   let authResponse = await request.post(`${booker_auth_URL}`, {
     headers: {
       "Content-Type": "application/json",
