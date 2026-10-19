@@ -4,8 +4,9 @@ let booker_auth_URL = process.env.RESTFUL_BOOKER_TOKEN_URL;
 let tokenID: string;
 let bookingIds: number[] = [];
 test("create tokenid:", async ({ request }) => {
+  console.log('Booker Auth URL:',booker_auth_URL);
   let authResponse = await request.post(
-    "https://restful-booker.herokuapp.com/auth",
+    `${booker_auth_URL}`,
     {
       headers: {
         "Content-Type": "application/json",
