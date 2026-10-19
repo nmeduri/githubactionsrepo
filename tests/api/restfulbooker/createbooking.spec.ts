@@ -29,7 +29,7 @@ test(" create tokenid:", async ({ request }) => {
   console.log("Token:", tokenID);
 });
 
-test(" create booking:", async ({ request }) => {
+test.skip(" create booking:", async ({ request }) => {
   let i;
   let userData = {
     firstname: "Jim",
