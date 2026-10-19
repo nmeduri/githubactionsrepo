@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-let booker_auth_URL = process.env.RESTFUL_BOOKER_TOKEN_URL;
+let booker_auth_URL = process.env.AUTHURL;
 let tokenID: string;
 let bookingIds: number[] = [];
 test("create tokenid:", async ({ request }) => {
