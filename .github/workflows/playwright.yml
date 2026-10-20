@@ -71,7 +71,7 @@ jobs:
           ENV: ${{ github.event.inputs.environment || 'QA' }}
           BASE_URL: ${{ secrets.BASE_URL }}
           HEALTH_CHECK_URL: ${{ secrets.HEALTH_CHECK_URL }}
-          RESTFUL_BOOKER_TOKEN_URL: ${{ secrets.PASSWORD }}
+          AUTHURL: ${{ secrets.AUTHURL }}
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
