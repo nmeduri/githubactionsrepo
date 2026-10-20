@@ -6,7 +6,7 @@ let bookingIds: number[] = [];
 test("create tokenid:", async ({ request }) => {
   console.log('Booker Auth URL:',booker_auth_URL);
   let authResponse = await request.post(
-    `${booker_auth_URL!}`,
+    `${booker_auth_URL}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ test("create tokenid:", async ({ request }) => {
       },
     },
   );
-
+console.log(`Parameter:${booker_auth_URL}`);
   console.log("Auth Response Status Code:", authResponse.status());
   expect(authResponse.status()).toBe(200);
 
