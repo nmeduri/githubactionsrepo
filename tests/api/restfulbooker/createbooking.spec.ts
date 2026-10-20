@@ -3,22 +3,19 @@ import { test, expect } from "@playwright/test";
 let booker_auth_URL = process.env.AUTHURL;
 let tokenID: string;
 let bookingIds: number[] = [];
-test("create tokenid:", async ({ request }) => {
-  console.log('Booker Auth URL:',booker_auth_URL);
-  let authResponse = await request.post(
-    `${booker_auth_URL}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      data: {
-        username: "admin",
-        password: "password123",
-      },
+test.beforeEach("create tokenid:", async ({ request }) => {
+  console.log("Booker Auth URL:", booker_auth_URL);
+  let authResponse = await request.post(`${booker_auth_URL}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
-  );
-console.log(`Parameter:${booker_auth_URL}`);
+    data: {
+      username: "admin",
+      password: "password123",
+    },
+  });
+  console.log(`Parameter:${booker_auth_URL}`);
   console.log("Auth Response Status Code:", authResponse.status());
   expect(authResponse.status()).toBe(200);
 
