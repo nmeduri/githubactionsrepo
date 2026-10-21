@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("intercept mocking api", async ({ page }) => {
+test(" @sanity intercept mocking api", async ({ page }) => {
   let mockData = [
     {
       name: "naveen",

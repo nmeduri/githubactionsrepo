@@ -31,7 +31,7 @@ test.beforeAll(async ({ request }) => {
   console.log("ID---:", employeeID);
 });
 
-test("Update an Employee Test", async ({ request }) => {
+test(" @regression Update an Employee Test", async ({ request }) => {
     TestMetaDataHelper.addMetadata({
     engineer: 'Naveen Meduri',
     module: 'Employee API',

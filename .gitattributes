@@ -1,2 +1,5 @@
-*.yml text eol=lf
-*.yaml text eol=lf
+# Handle line endings automatically for text files
+* text=auto
+
+# Explicitly ensure GitHub Actions workflows always use LF
+.github/**/*.yml text eol=lf

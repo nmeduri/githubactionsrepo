@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 /**
  *  Returns the ids of all the bookings that exist within the API.
  */
-test(" Get All BookingIds", async ({ request }) => {
+test(" @regression Get All BookingIds", async ({ request }) => {
   let getResponse = await request.get(
     "https://restful-booker.herokuapp.com/booking",
   );
