@@ -1,7 +1,6 @@
 # ═══════════════════════════════════════════════════════════════
 # FILE: .github/workflows/master-pipeline.yml
-# REPO: naveenanimation20/OpenCartWebAPIAutomationFramework
-# REPO: https://github.com/nmeduri/githubactionsrepo
+# # REPO: nmeduri/githubactionsrepo
 # DEV REPO: jglick/simple-maven-project-with-tests
 # ═══════════════════════════════════════════════════════════════
 # "Run up to environment" — the dropdown controls how far the
@@ -38,12 +37,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout DEV repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: jglick/simple-maven-project-with-tests
 
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: "temurin"
           java-version: "17"
@@ -58,7 +57,7 @@ jobs:
 
       - name: Upload Unit Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: unit-test-results
           path: target/surefire-reports/
@@ -83,19 +82,19 @@ jobs:
     environment: dev
     steps:
       - name: Checkout QA repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: nmeduri/githubactionsrepo
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-dev
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
@@ -112,7 +111,7 @@ jobs:
         run: npx playwright install-deps chromium
 
       - name: Restore reportingLabs history
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: reporting-labs.history.json
           key: reporting-labs-history-dev-${{ github.run_id }}
@@ -143,7 +142,7 @@ jobs:
 
       - name: Upload DEV HTML Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dev-sanity-html-report
           path: reports/html-report/
@@ -151,7 +150,7 @@ jobs:
 
       - name: Upload DEV Allure Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dev-sanity-allure-report
           path: allure-report/
@@ -159,7 +158,7 @@ jobs:
 
       - name: Upload DEV reportingLabs Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dev-sanity-reportinglabs-report
           path: reporting-labs/
@@ -186,19 +185,19 @@ jobs:
     environment: QA
     steps:
       - name: Checkout QA repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: nmeduri/githubactionsrepo
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-qa
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
@@ -215,7 +214,7 @@ jobs:
         run: npx playwright install-deps chromium
 
       - name: Restore reportingLabs history
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: reporting-labs.history.json
           key: reporting-labs-history-qa-${{ github.run_id }}
@@ -246,7 +245,7 @@ jobs:
 
       - name: Upload QA HTML Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qa-regression-html-report
           path: reports/html-report/
@@ -254,7 +253,7 @@ jobs:
 
       - name: Upload QA Allure Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qa-regression-allure-report
           path: allure-report/
@@ -262,7 +261,7 @@ jobs:
 
       - name: Upload QA reportingLabs Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qa-regression-reportinglabs-report
           path: reporting-labs/
@@ -289,19 +288,19 @@ jobs:
     environment: stage
     steps:
       - name: Checkout QA repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: nmeduri/githubactionsrepo
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-stage
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
@@ -318,7 +317,7 @@ jobs:
         run: npx playwright install-deps chromium
 
       - name: Restore reportingLabs history
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: reporting-labs.history.json
           key: reporting-labs-history-stage-${{ github.run_id }}
@@ -349,7 +348,7 @@ jobs:
 
       - name: Upload STAGE HTML Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: stage-sanity-html-report
           path: reports/html-report/
@@ -357,7 +356,7 @@ jobs:
 
       - name: Upload STAGE Allure Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: stage-sanity-allure-report
           path: allure-report/
@@ -365,7 +364,7 @@ jobs:
 
       - name: Upload STAGE reportingLabs Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: stage-sanity-reportinglabs-report
           path: reporting-labs/
@@ -393,19 +392,19 @@ jobs:
     environment: Prod
     steps:
       - name: Checkout QA repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: nmeduri/githubactionsrepo
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: "npm"
 
       - name: Cache Playwright browsers
         id: pw-cache-prod
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
@@ -422,7 +421,7 @@ jobs:
         run: npx playwright install-deps chromium
 
       - name: Restore reportingLabs history
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: reporting-labs.history.json
           key: reporting-labs-history-prod-${{ github.run_id }}
@@ -453,7 +452,7 @@ jobs:
 
       - name: Upload PROD HTML Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: prod-smoke-html-report
           path: reports/html-report/
@@ -461,7 +460,7 @@ jobs:
 
       - name: Upload PROD Allure Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: prod-smoke-allure-report
           path: allure-report/
@@ -469,7 +468,7 @@ jobs:
 
       - name: Upload PROD reportingLabs Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: prod-smoke-reportinglabs-report
           path: reporting-labs/
