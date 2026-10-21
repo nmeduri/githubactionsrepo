@@ -11,7 +11,7 @@
 #   Prod  → Build → DEV → QA → STAGE → PROD
 # ═══════════════════════════════════════════════════════════════
 
-name: Master CI/CD Pipeline
+name: Master CI/CD Pipeline for Playwright Test Execution
 
 on:
   workflow_dispatch:
